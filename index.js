@@ -1,3 +1,1 @@
-const server = require('./src/server/server');
-
-server(3000);
+require('./src/server/server')

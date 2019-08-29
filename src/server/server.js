@@ -1,17 +1,21 @@
 const http = require('http');
 const url = require('url');
-const router = require('../routes/route');
+const router = require('../routes/router')
 
-const server = port => {
-    const createNewServer = http.createServer((request, response) => {
+const server = http.createServer((request, response) => {
+    const newUrl = url.parse(request.url);
+    if (newUrl.pathname.includes('/products')) {
+        const activeLink = router['/products'];
+        activeLink(request, response)
+    }
+    // else if () { const activeLink = router['/products'];
+    // activeLink(request, response)}
+    else {
+        const activeLink = router.default;
+        activeLink(request, response)
+    }
 
-        const parseUrl = url.parse(request.url);
-        const activeRouter = router[parseUrl.pathname]
-        activeRouter(request, response)
-    })
+}).listen(3000)
 
-    createNewServer.listen(port);
-}
-
-module.exports = server;
+module.exports = server
 
