@@ -1,6 +1,6 @@
-const mainRouter = (req, res) => {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.write("Hello");
-    res.end();
-};
-module.exports = mainRouter;
+const mainRouter = (request, response) => {
+    response.set("Content-Type", "text/html");
+    response.status(200);
+    response.send("<h2>Привет Express!</h2>");
+  };
+  module.exports = mainRouter;
