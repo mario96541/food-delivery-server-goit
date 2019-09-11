@@ -19,5 +19,11 @@
   "homepage": "https://github.com/SvetlanaVoshchevskaya/food-delivery-server-goit#readme",
   "devDependencies": {
     "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "util.promisify": "^1.0.0"
   }
 }

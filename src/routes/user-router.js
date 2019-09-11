@@ -1,13 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const user = {
-    "username": "Ivan",
-    "telephone": "063 777 77 77",
-    "password": "12345",
-    "email": "ivan@gmail.com"
-};
-
 const userRouter = (request, response) => {
     const pathForSave = path.join(__dirname, '../', 'db', 'user.json');
 

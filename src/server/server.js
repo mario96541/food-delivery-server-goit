@@ -1,21 +1,22 @@
-const http = require('http');
-const url = require('url');
-const router = require('../routes/router')
+const express = require('express');
+const router = require('../routes/route');
+const bodyParser = require("body-parser");
+const app = express();
 
-const server = http.createServer((request, response) => {
-    const newUrl = url.parse(request.url);
-    if (newUrl.pathname.includes('/products')) {
-        const activeLink = router['/products'];
-        activeLink(request, response)
-    }
-    // else if () { const activeLink = router['/products'];
-    // activeLink(request, response)}
-    else {
-        const activeLink = router.default;
-        activeLink(request, response)
-    }
+const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+};
 
-}).listen(3000)
+app
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(bodyParser.json())
+  .use("/", router)
+  .use(errorHandler);
 
-module.exports = server
+
+app.listen(3000)
+
+
+
 
